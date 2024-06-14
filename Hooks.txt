@@ -1,0 +1,104 @@
+useRef() is used to store mutable values that do not trigger a re-render.
+useState() is used to manage a state that triggers a re-render when it changes.
+
+Why use useRef instead of a variable?
+Variable declared using useRef doesn't get included in the react life cycle which means if any state updates the value defined using useRef doesn't change that's the advantage. 
+Whereas variable declared without using useRef gets reclared upon component re-render.
+
+What is useState?
+
+UseState is a hook provided by React to allow the implementation of state in functional components. It returns an array with two values: the current value and the function to update it.
+If we click a button n number of times, the component is re-rendered for n times. 
+This might not look too big of a problem for this scenario, but when we have a heavy component, each re-render cost will impact the application’s overall performance. 
+The setFunction for a useState hook is asynchronous in nature; hence it waits and executes in the background, and the setUpdatedNumber function never receives the current value of the number.
+
+useState() Is Used to Manage State, While useRef() Is Used to Store Mutable Values
+
+What is useRef?
+
+UseRef is a hook provided by React that accepts an initial value and returns a reference with a property on it called ‘current’.
+These are generally used to minimize the rerender of components and are mainly used in form components by referencing the DOM elements.
+ref in real time(synchronously), and the values are correctly updated in the UI.
+One of the major limitations is that the current value is not reflected directly on the UI
+It's commonly used for accessing and managing DOM elements directly, storing persistent values, or working with values that should not trigger a re-render.
+You can use it to persist or preserve values between re-renders. The useRef hook takes an initial value of any type as argument and returns an object with a single current propert.
+If you don't pass an initial value, the current property will be undefined.
+As an example, if the initialValue is the boolean value true, then the ref object returned by the useRef hook will be { current: true }
+The returned ref object is mutable
+The value of the ref object remains the same between re-renders
+Updating the value of the ref object doesn’t trigger a re-render
+The value of the ref object remains the same between re-renders
+Updating the value of the ref object doesn’t trigger a re-render]
+
+The Value Returned by useState() Is Always a State Value, While useRef() Can Return Any Mutable Value
+In conclusion, useRef() isn’t just for manipulating the DOM; it’s a handy tool for maintaining values between renders in a React functional component.
+default value is undefined if not specify that
+
+https://dzone.com/articles/usestate-vs-useref-understand-the-technical-differ#:~:text=to%20the%20console.-,Differences%20Between%20useState()%20And%20useRef(),not%20trigger%20a%20re%2Drender.----------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+useState in Typescript
+
+setValue ->
+const setValue: (value: React.SetStateAction<number>) => void
+--------------------------------------------------------
+setValue(value: React.SetStateAction<number>): void
+
+1.TypeScript allows certain implicit type coercions and by default, the type inference can sometimes be relaxed when dealing with state updates.
+2. React's setState function is typed to accept any value by default, so it doesn't enforce type checking strictly unless you specify otherwise.
+
+initial value
+setvalue 
+--------------------------------------------------------------------------------
+useReducer
+
+initilaState -> object
+
+ex: const names: string[] = [];
+    console.log(typeof names);
+  o/p -> object
+
+it return as object
+ because names is an array, which is a type of object.
+
+const names: string[] = [];
+console.log(Array.isArray(names)); // true
+array is a Data Structure and not a Data Type.
+It can store values of any data type which we can access, delete and update the existing values also we can add on new values into it.
+The typeof operator in JavaScript is somewhat limited in that it only returns one of a few possible values: "undefined", "object", "boolean", "number", "string", "symbol", and "function"
+
+const names: string[] = [];
+
+console.log(typeof names); // "object"
+console.log(Array.isArray(names)); // true
+--------------------------------------------------------------------------------
+Type Inference
+
+--------------------------------------------------------------------------------
+	useContext
+* useState is must
+1. import  createContext, useContext
+2. const UserContext = createContext();
+  if Typescript
+ const UserContext = createContext<type mention>(values here);
+3. create a state in which function is default
+4. Default function those needed
+
+	*Using UserContext to access the property of provider
+	*provider with value
+	*
+5. Receiving function to create 
+     const user = useContext(UserContext);
+   -> user return Boolean/value
+ <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+
+1. import React, { useState, useEffect, createContext, useContext } from 'react';
+
+2. const UserContext = createContext<ContextState | undefined>(undefined);
+
+3. 
+
+1. if i set api in state i checked the state is object
+   again pass it provider it can array
+2. 

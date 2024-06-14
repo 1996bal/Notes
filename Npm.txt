@@ -1,0 +1,42 @@
+  /====================================================/
+ /==== npm i react-native-countdown-circle-timer =====/
+/====================================================/
+
+1 -> "react-native-countdown-circle-timer": "*",
+     "react-native-svg": "15.2.0"
+	two dependency need
+  /====================================================/
+ /==== npm i react-native-push-notification ==========/
+/====================================================/
+
+
+
+
+
+
+
+  /====================================================/
+ /==== npm i react-native-countdown-circle-timer =====/
+/====================================================/
+
+> Task :app:processDebugMainManifest FAILED
+
+chart packages
+1. npm i react-native-fab
+2. npm i react-native-pathjs-charts
+3. npm i react-native-circular-chart-current
+4. npm i react-native-pure-chart-bar-kit
+5. npm i react-native-progress-wheel
+6. npm i react-native-bullet-graph
+7. 
+
+react-native-google-signin
+react-native-vision-camera
+react-native-country-flag
+react-native-awesome-loading
+react-native-input-spinner
+react-native-responsive-fontsize
+react-native-ratings
+react-native-spokestack-tray
+
+

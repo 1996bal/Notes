@@ -1,0 +1,451 @@
+Expo
+
+check version---> in command prompt
+      node -v
+
+Two ways to create a project
+1. using command prompt
+
+2. using visual studio code
+
+Expo App install
+Expo account create
+
+
+core components
+<View>  <Image>  <ScrollView>  <TextInput>  <Text> 
+view is a component is used to create a container for other component. It is similar to div element in html
+---------------------------------------------------------------------------------------------------------------
+Button component first to import from react native
+<Button /> -> self closing tag
+or
+<Button > </Button>
+
+<Button
+  onPress={onPressLearnMore}    -->
+  title="Learn More"            -->
+  color="#841584"               -->                            
+  accessibilityLabel="Learn more about this purple button"  -->
+/>
+-----------------------------------------------------------------------------------------------------------
+Before use this stylesheet we need import the stylesheet 
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 50,
+  },
+  bigBlue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  red: {
+    color: 'red',
+  },
+});
+
+
+stylesheet -> styling for our components
+stylesheet.create() this method convert from object
+
+To access
+    <Text style={styles.container} >Bala</Text>
+
+--------------------------------------------------
+const App = () => {
+return ();
+		};
+
+export default App;
+---------------------------------------------------
+ <Image
+          source={{
+            uri: '',
+          }}
+          style={{width: 200, height: 200}}
+        />
+----------------------------------------------------
+ <Text style={{fontSize: 96}}>Scroll me plz</Text>
+
+----------------------------------------------------------Basics------------------------------------------------------------
+import React from 'react';
+--->In React Native, the import React from 'react' statement is used to import the React library, which is required to use JSX syntax.
+In React Native, you write your code using a syntax extension for JavaScript called JSX. JSX allows you to write HTML-like code in your JavaScript files, which makes it easier to create and manipulate user interfaces.
+
+However, browsers cannot directly understand JSX syntax, so it needs to be transformed into regular JavaScript code before it can be executed. This transformation process is handled by a tool called Babel.
+
+Babel converts JSX into calls to the React.createElement() function. This function takes three arguments: the type of the element to create, a props object, and an optional children array.
+
+To use React.createElement(), you need to import the React library at the beginning of your file.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+css in react native
+
+borderWidth:2,
+borderColor:'red',
+margin:2,
+padding:3,
+paddingHorizontal:3,
+   flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+--------------------------------------------------------------------------------------------------------------------------------------------------
+data.slice(start,count)
+data.splice(
+
+var data = [1,2,3,4,5];
+let result = data.slice(1,3);
+console.log(result);
+
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+const citrus = fruits.splice(1, 3);
+
+console.log(citrus);
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+   <Image style={styles.img} source={require('./images.jpg')}/>
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+import React from 'react';
+import {View,Text,StyleSheet,Image, TextInput,Icon} from 'react-native';
+
+
+function App(){
+
+return(
+
+<View>
+<View style={styles.appcontainer} > 
+
+ <Image style={styles.img} source={require('logo.svg')}/>
+ <Text style={styles.text}>Employee Management</Text> 
+ 
+</View>
+<View>
+ <Text style={styles.login}>Login</Text> 
+ <Text style={styles.heading}>Enter your Credentials to Login.  </Text>
+ <Text style={styles.inputlabel}>Email Address</Text>
+ <TextInput style={styles.emailText} placeholder="Enter Email Address" />
+ <Text style={styles.inputlabel}>Password</Text>
+ 
+
+  
+
+<View style={styles.h}>
+    <TextInput
+      style={styles.passwordText}
+      placeholder="Enter Password"
+      secureTextEntry={true}
+
+       
+    
+    />
+
+
+
+
+
+ <Image
+          style={styles.j}
+          source={require('./assets/view.svg')}
+        />
+      </View>
+
+ 
+ <Text style={styles.btn}>Login</Text>
+</View>  
+
+</View>  
+
+)
+
+}
+
+const styles = StyleSheet.create({
+  h:{
+flexDirection:'row',
+borderColor:'#D3D3D3',
+borderWidth:2,
+marginLeft:20,
+marginRight:30,
+borderRadius:10,
+  },
+  j:{
+    marginLeft:20,
+    marginTop:15,
+  },
+  appcontainer:{
+backgroundColor:'#F1F1F1',
+paddingBottom:80
+  },
+img:{
+marginLeft:150,
+marginTop:100,
+
+},
+text:{
+  fontSize:20,
+  fontWeight:640,
+  marginLeft:80,
+  marginTop:15,
+},
+login:{
+  marginLeft:20,
+  marginTop:20,
+    fontSize:40,
+  fontWeight:600,
+  
+  
+},
+heading:{
+  marginLeft:20,
+  marginTop:10,
+  fontSize:20,
+  fontWeight:480,
+  
+},
+emailText:{
+borderColor:'#D3D3D3',
+borderWidth:1,
+padding:10,
+marginLeft:20,
+marginRight:30,
+borderRadius:7,
+fontSize:20,
+color:'#D3D3D3',
+
+     
+
+
+},
+passwordText:{
+  
+  borderColor:'white',
+borderWidth:2,
+padding:10,
+marginLeft:0,
+marginRight:1,
+borderRadius:7,
+fontSize:20,
+color:'#D3D3D3',
+
+},
+inputlabel:{
+  marginLeft:20,
+  marginBottom:4,
+  marginTop:25,
+  fontWeight:500,
+},
+btn:{
+  backgroundColor:'#1F90FF',
+  padding:10,
+  color:'white',
+  marginLeft:20,
+  marginRight:20,
+  marginTop:30,
+  textAlign:'center',
+  borderRadius:7,
+  fontSize:20
+}
+});
+
+export default App;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+npx create-expo-app name
+
+npm install -g yarn
+---------------------------
+
+youtube link
+
+https://youtu.be/sMZKhGCpuNo?si=yLGsxEP-yMh5HSI-
+
+--------------------------
+
+Run in Adminstrate
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Windows\system32> Get-ExecutionPolicy
+Restricted
+PS C:\Windows\system32> Set-ExecutionPolicy  Unrestricted
+
+Execution Policy Change
+The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose
+you to the security risks described in the about_Execution_Policies help topic at
+https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): a
+PS C:\Windows\system32> Get-ExecutionPolicy
+Unrestricted
+PS C:\Windows\system32>
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import React from 'react';
+import { Image, StyleSheet } from 'react-native';
+
+const App = () => {
+  return (
+    <Image
+      source={require('./Profile.png')}
+      style={styles.image}
+    />
+  );
+};
+
+const styles = StyleSheet.create({
+  image: {
+    width: 100,
+    height: 100,
+  },
+});
+
+export default App;
+----------------------------------------------------------------------------------------
+# {{VERSION}} and {{REACT_VERSION}} are the release versions showing in the diff
+npm install react-native@VERSION
+npm install react@REACT_VERSION
+---------------------------------------------------------------------------------------------------------
+npx react-native@latest 
+npx react-native doctor
+√ Select the device / emulator you want to use » Emulator INFO    | Storing crashdata in: C:\Users\balam\AppData\Local\Temp\\AndroidEmulator\emu-crash-34.1.19.db, detection is enabled for process: 16492 (disconnected)
+
+----------------------------------------------------------------------------------\
+
+
+
+
+{
+  "dependencies": {
+    "expo-status-bar": "~1.11.1",
+    "react-native-svg": "14.1.0",
+    "react-native-svg-uri": "^1.2.3"
+  }
+}----------------
+
+
+{
+  "dependencies": {
+    "react-native-paper": "4.9.2",
+    "@expo/vector-icons": "^14.0.0"
+  }
+}
+
+----------------------------------------find difference=--------------------
+<FlatList  
+data={images} 
+    renderItem={({item}) => <Text>title = {item.name} </Text>
+       keyExtractor={item => item.uri}  />
+--------------------thius
+    <FlatList
+        data={images}
+        renderItem={({item}) => <Text> title={item.name}</Text>}
+        keyExtractor={item => item.uri}
+      />
+-----------------------------------------------------------------------------------------------------------------------
+React native 
+what are package installed
+svg file 
+andriod ios view
+install process for andriod ios
+babel.congif.js
+pacage.json what are the dependnecy
+strutue for react native project
+different componennet
+--------------------------------------------------
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import Svg, { Path } from "react-native-svg"
+
+export default function TriangleDown() {
+  return (
+    <View style={styles.container}>
+      <Svg style={{marginTop:24,marginLeft:24,}}
+        width={20}
+        height={20}
+        viewBox="0 0 20 20"
+      >
+      <polygon id="Path" fill="white" fill-rule="nonzero" points="10.3980583 22 13.8932039 22 13.8932039 13.9417476 22 13.9417476 22 10.4466019 13.8932039 10.4466019 13.8932039 2 10.3980583 2 10.3980583 10.4466019 2 10.4466019 2 13.9417476 10.3980583 13.9417476"></polygon>
+      </Svg>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    
+ 
+    width:70,
+    height:70,
+    
+    backgroundColor:'blue',
+    borderRadius:50,
+  },
+});
+------------------------------------------------------------------------------------------------------------------------
+{ 'name':inputname,'email':inputemail,'mobile_number':inputphone,'date_of_birth':inputdate,'blood_group':inputbloodgroup,
+         'address':inputaddress,'department_token':department_token1,"photo":photoFile }
+------------------------------------------------------------------------------------------------------------------------
+useState
+ state variable(count)    setter function (setCount). 
+No use of “this” or “this.state”
+Stateless components do not use the “this” keyword. By using the useState hook, we can call the state directly with the variable we have set for it.
+A key difference between class and functional components is the fact that class components have a state while functional components are stateless. The useState hook allows us to add local state to a functional component. This hook holds onto a state between re-renders.
+The only argument to the useState() hook is the initial state. Unlike with classes, the state doesn’t have to be an object. We can keep a number or a string if that’s all we need.
+import React, { useState } from 'react'
+
+function HookCounterThree() {
+  const [name, setName] = useState({ firstName: '', lastName: '' })
+  return (
+    <form>
+      <input
+        type="text"
+        value={name.firstName}
+        onChange={e => setName({ ...name, firstName: e.target.value })}
+      />
+      <input
+        type="text"
+        value={name.lastName}
+        onChange={e => setName({ ...name, lastName: e.target.value })}
+      />
+      <h2>Your first name is - {name.firstName}</h2>
+      <h2>Your last name is - {name.lastName}</h2>
+      <h2>{JSON.stringify(name)}</h2>
+    </form>
+  )
+}
+
+export default HookCounterThree
+--------------------------------------------------------------------------------------------------------------------------
+useState hook the state doesn't have to be an object, it can be an array, a number, a boolean, a string etc
+
+--------------------------passing multiple props---------------------------------
+
+function Greeting({ name, age }) {
+  return (
+    <div>
+      <h1>Hello, {name}!</h1>
+      <p>You are {age} years old.</p>
+    </div>
+  );
+}
+
+function App() {
+  const greetingProps = {
+    name: 'John',
+    age: 30,
+  };
+
+  return <Greeting {...greetingProps} />;
+}
+-----------------------------------------------------------------------------
+

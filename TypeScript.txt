@@ -1,0 +1,353 @@
+npx react-native@latest init yourproject
+
+npm install
+
+npx react-native run-android
+-----------------------------------------------------
+TypeScript is a syntactic superset of JavaScript which adds static typing.
+-----------------------------------------------------
+1. decla
+
+let firstName: string = "Dylan";
+
+const names:  string[] = ["Dylan"];
+
+-------------------------------------------------------------
+// define our tuple
+let ourTuple: [number, boolean, string];
+
+// initialize correctly
+ourTuple = [5, false, 'Coding God was here'];
+
+console.log(ourTuple);
+------------------------------------------------------------------
+const car: { type: string, model: string, year: number } = {
+  type: "Toyota",
+  model: "Corolla",
+  year: 2009
+};
+
+console.log(car);
+---------------------------------------------------------------
+interface Props {
+  title: string;
+}
+
+const Header = ({ title }: Props) => {
+  return (
+    <header>
+      <h1>{title}</h1>
+    </header>
+  );
+};
+
+export default Header;
+			-----------------------------------------
+
+const App: React.FC = () => {
+  return (
+    <div>
+      <Header title="Welcome to My App" />
+      {/* Other components */}
+    </div>
+  );
+};
+
+export default App;
+-----------------------------------------------------------------------------------------------
+Special types
+
+1. any
+2. unknown
+3. never
+4. undefined
+5. null
+
+any is a type that disables type checking and effectively allows all types to be used.
+
+unknown is a similar, but safer alternative to any.
+
+unknown is best used when you don't know the type of data being typed. To add a type later, you'll need to cast it.
+
+Casting is when we use the "as" keyword to say property or variable is of the casted type.
+
+never effectively throws an error whenever it is defined.
+
+undefined and null are types that refer to the JavaScript primitives undefined and null respectively.
+-----------------------------------------------------
+Arrays
+
+const names: string[] = [];
+names.push("bala");
+
+const names: readonly string[] = ["b"];
+names.push("D");
+
+Inference
+
+const numbers = [1,2,3,4];
+numbers.push(4);
+
+-----------------------------------------------------
+Interfaces
+
+1. function takes as args
+2. function return as args
+3. optional properties
+4. reading properties
+5. index properties
+6. extending properties
+7. discriminating properties
+8. generic interfaces
+
+const App: FC = () => {
+const App: React.FC = () => {
+const App: React.FunctionComponent = () => {
+---------------------------------------------
+import React, { FC } from 'react';
+
+const App: FC = () => {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+    </div>
+  );
+};
+
+export default App;
+----------------------------------------------
+import React from 'react';
+
+const App: React.FC = () => {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+    </div>
+  );
+};
+
+export default App;
+---------------------------------------------
+import React from 'react';
+
+const App: React.FunctionComponent = () => {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+    </div>
+  );
+};
+
+export default App;
+----------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import React from 'react';
+ -> old version React 17,  Writing import React from 'react'; is necessary in older versions of React (prior to React 17) because JSX syntax gets transformed into React function calls by Babel during the build process. Therefore, React needed to be in scope whenever JSX was used.
+ -> After Version React 17  
+
+javascript
+Copy code
+import React from 'react';
+
+function MyComponent() {
+  return <h1>Hello, world!</h1>;
+}
+
+export default MyComponent;
+New Way (React 17 and Later)
+With the new JSX transform, you no longer need to import React explicitly:
+
+javascript
+Copy code
+function MyComponent() {
+  return <h1>Hello, world!</h1>;
+}
+
+export default MyComponent;
+
+
+To use the new JSX transform, ensure you have the necessary versions of React and JSX transform plugins. Typically, this involves:
+Update your .babelrc or babel.config.js to include the new JSX transform plugin:
+
+json
+Copy code
+{
+  "presets": ["@babel/preset-react"]
+}
+
+Summary
+React 16 and earlier: You must import React explicitly when using JSX.
+React 17 and later: You can use the new JSX transform and avoid importing React explicitly.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.ts (TypeScript) Files
+
+-> Purpose: .ts files are used for writing plain TypeScript code. They are typically used for non-React TypeScript code, such as utility functions, algorithms, data models, server-side code, etc.
+Syntax: They support TypeScript syntax, including type annotations, interfaces, generics, etc.
+No JSX Support: .ts files do not support JSX syntax. If you try to include JSX in a .ts file, TypeScript will raise a syntax error
+
+-> Does not support JSX.
+-> Used for plain TypeScript code without any JSX. Typically used for backend logic, utility functions, and data models.
+-> When writing non-React TypeScript code.
+-> When you do not need to include JSX.
+-> For utility functions, classes, and data models.
+
+.tsx (TypeScript with JSX) Files
+
+-> Purpose: .tsx files are used when you need to write React components in TypeScript. They are designed to support both TypeScript and JSX syntax.
+Syntax: They support all TypeScript features as well as JSX syntax, allowing you to write React components directly in these files.
+JSX Support: .tsx files can include JSX, which is essential for writing React components. JSX allows you to write HTML-like syntax directly within your JavaScript/TypeScript code.
+-> Supports JSX, making it suitable for writing React components.
+-> Used for React components where JSX is necessary. Allows for a seamless integration of TypeScript with React's JSX syntax
+-> When writing React components.
+-> When you need to include JSX within your TypeScript code.
+-> For any file that needs to render React components or include HTML-like syntax within TypeScript.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------import { MyProvider } from './MyProvider';
+import UserList from './UserList';
+
+When a module exports multiple items using named exports (i.e., export { ... }), you must use curly braces to import those specific items
+
+When a module exports a single item as the default export (i.e., export default ...), you do not need curly braces to import it.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Using React.useState ensures that you're accessing the hook provided by React and not another similarly named function from a different library or your own codebase.
+
+import React from 'react';
+
+const MyComponent = () => {
+  const [state, setState] = React.useState(initialState);
+  // Rest of the component logic
+};
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+const [counter, setCounter] = useState<{name:string,rate:number,review?:string}[]>([]) assing inline interface
+
+import { IState as IProps } from "../App"
+
+const List: React.FC<IProps> = ({ form }) => {
+...
+}
+
+ IState under the alias IProps 
+
+-------------------------------------------------------------------------------------
+1. create folder in assets , font
+2. https://fonts.google.com/selection
+3. Find your desired fonts in Google Fonts, select the styles you want (e.g., Light 300, Regular 400, etc.), and download the entire font folder using the Download all button:
+4.Create an assets folder in the root directory of your project, with a subfolder called fonts. Then, paste all the TTF files you copied from the static folder earlier into the fonts folder of your project:
+5. create a react-native.config.js
+6. module.exports = {
+  project: {
+    ios: {},
+    android: {},
+  },
+  assets: ['./assets/fonts'],
+};
+7. npx react-native-assets
+
+
+-------------------------------------------------------------------------------------
+Typescript usestate
+
+interface Post {
+ id: number;
+ authorId: string;
+ title: string;
+ content: string;
+}
+
+  const [posts, setPosts] = useState<Array<Post>>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+
+------------------------------------------------------------
+Use onPress={handleIncrement}: This correctly passes the function reference as an event handler.
+Avoid onPress={handleIncrement()}: This calls the function immediately during render and passes its return value to the event handler, which is not the desired behavior.
+------------------------------------------------------------
+mipmap-mdpi  -> ic_launcher change -> icon front, swipe top icon
+------------------------------------------------------------
+
+typescript features
+
+Null checking
+generics
+access
+namespaces
+type Annotations
+static typing checking
+bug detection
+portability
+dom manipulation
+Enhanced IDE support
+consistency
+
+
+-------------------------------------------------------------
+Difference between union types and intersection types
+
+Union Types (A | B): A union type is a type formed from two or more other types, representing values that may be any one of those types. We use the vertical bar (|) to denote a union type. For example, let value: number | string; means the value can be either a number or a string.
+function formatInput(input: string | number) {
+    // input can be either string or number
+}
+
+Intersection Types (A & B): An intersection type is a type that combines multiple types into one, representing values that are all of those types at the same time. We use the ampersand (&) to denote an intersection type. For example, let value: number & string; is not valid because a value cannot be both a number and a string at the same time. However, intersection types are more useful when working with interfaces:
+
+interface HasName {
+    name: string;
+}
+
+interface CanSpeak {
+    speak(): void;
+}
+
+// A person is someone who has a name and can speak
+type Person = HasName & CanSpeak;
+
+let person: Person;
+person = {
+    name: "Alice",
+    speak() { console.log("Hello!"); }
+};
+-------------------------------------------------------------------
+Using number and string types, TypeScript enforces a rule: once a variable is set with a specific type, it cannot be changed to a different type at will throughout the program.
+--------------------------------------------------------
+1. npm i react-native-skeleton-content
+2. 
+3. 
+4.
+-------------------------------------------------------
+How to call a function in another component
+How to pass a function as a prop and call it from a child component
+npm i @config-plugins/react-native-blob-util
+https://www.youtube.com/watch?
+v=vcV3Z1O2WvU&ab_channel=BugNinza
+
+1. <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+2. D:\Demo\node_modules\react-native-fetch-blob\android
+build.gradle
+to change as
+android {
+   buildToolsVersion = "30.0.3"
+        compileSdkVersion = 30
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    <------------------------->
+dependencies {
+    //compile 'com.facebook.react:react-native:+'
+    //{RNFetchBlob_PRE_0.28_DEPDENDENCY}
+     implementation 'com.facebook.react:react-native:+'
+}
+
+3.
+npm install react-native-fetch-blob@latest
+npm i @config-plugins/react-native-pdf
+npm i @config-plugins/react-native-blob-util
+npm install react-native-blob-util
+npm install react-native-fetch-blob
+npm install react-native-pdf
+
+Internal

@@ -1,0 +1,137 @@
+GITHUB
+email :    ariyaputhiran.2442@gmail.com
+psd :      7639968584@bala
+username:  1996bal
+
+1. Click everything as next
+
+2.  open command prompt as normal
+
+3. run as git -> full details about git
+
+4. git config --global user.name "1996bal" -> username
+   paste in command prompt
+5.  git config --global user.email " ariyaputhiran.2442@gmail.com" -> useremail
+   paste in command prompt
+
+6. copy the link in GitHub paste in vscode
+   git clone -link-
+   git clone https://github.com/1996bal/Practice.git
+
+U ->> denotes untracked file
+
+7. So need to add file to git  clone folder
+	git add Addition.js
+  you se the changes of A
+ A ->> denoted 
+
+8. git commit -m "Addition.js file Added"
+	-m -> message
+	" " -> message content
+   For using this command to copy file from staging area to GitHub copy folder area
+
+9. git push origin main
+
+10. asking to sign the GitHub
+ M -> denote Modified
+   so again 
+git add Addition.js
+git commit -m " Modified Addition.js file Added"
+git push origin main
+
+-------------------------------------------------
+git status 
+ -> changes to be committed, new file added file color as green 
+-------------------------------------------------
+ 11. git pull
+     used for if any changes occur in GitHub page it will reflect using this command , changes in Vscode
+
+12. cd .. -> denote back to one folder
+
+-> create new folder 
+   is normal folder not as repository
+   so use command then only see hidden file as .git(opacity is little)
+  -> git init
+  -> git add . -> using command more than files are untracking they are copying to staging area
+git commit -m " Modified Addition.js file Added"
+git push origin main
+
+-------
+you need to create repository first in github, then
+  git remote add origin <link in github>
+
+used for connecting origin
+
+-----
+master branch -> main
+git branch -M main ->> used for change the name from master to main
+git branch
+git push origin master
+
+repository can create two or more branch
+for checking command
+-> git branch -a
+
+...> change the branch to another
+1. checkout the branch first
+	git checkout <branch name>
+	git checkout branch2
+
+2. 
+
+----------------------------------
+if any changes in vscode use this command
+
+<--  git add Addition.js  --> (one file only)  or <--- git add . --> [if using this modified all files will add to staging area]-> space is necessary
+git commit -m " Modified Addition.js file Added"
+git push origin main
+
+git checkout main
+git diff gitbranch1
+git branch hello-world-images
+
+-------------------------------------------
+from main branch
+git merge gitbranch1
+for merge main and gitbranch1
+--------------------------------------------
+
+command line clear 
+to clear the vscode
+--------------------------------------------
+create a new branch in vscode
+git branch  newbranch2
+git push origin newbranch2 
+then only see in GitHub page
+--------------------------------------------
+pull request
+GitHub page see pull request
+click -> new pull request
+check whether base(main) -> compare(main)
+give your comment
+-->Merge pull request
+-->conform merge
+--> get message as success
+---------------------------------------------
+-->Repository
+Todolist
+ Main
+->sub branch Task1
+->task2
+------------------------------------------------
+git clone <githublink>
+git pull
+
+------------------------------------------------
+remotes/origin/HEAD
+origin/main
+remotes/origin/main
+
+The remotes/origin/HEAD is the branch currently checked out in the origin repository, which means if you clone that repository, by default that branch will be checked out first.
+
+The origin/main is a remote branch (which is a local copy of the branch named main on the remote named origin)
+
+The remotes/origin/main, usually referred to as origin/main, is the location of a branch called main on the remote called origin the last time you did a git command. If they're related, main will have origin/main as its upstream.
+----------------------------------------------------
+git push origin HEAD
+

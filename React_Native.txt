@@ -1,0 +1,600 @@
+-----------------------------------------------------------------
+--------------------Child to parent pass value-------------------
+function A(){
+	const[value, setValue] = useState(' ');
+		return <Balance setter={value} />
+	    }
+
+function Balance({setter}){
+	setter('Five');
+			}
+-----------------------------------------------------------------
+	props using {...props}
+
+import { View, Text } from 'react-native';
+
+export default function App() {
+  const y = { id: 1, title: 'time' };
+  return (
+    <View>
+      <Text>First</Text>
+      <Second {...y} />
+      <Third y={y} />
+    </View>
+  );
+}
+
+function Second(y) {
+  console.log('y', y);
+  return <Text>Second {y.title}</Text>;
+}
+
+function Third(props) {
+  console.log('3', props);
+  return <Text>Third {props.y.id}</Text>;
+}
+-----------------------------------------------------------------
+import React, { createContext, useState, ReactNode, useContext,useEffect } from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
+
+// Define the type for the context value
+interface MyContextType {
+  value: number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
+}
+
+// Create a Context with an undefined initial value
+const MyContext = createContext<MyContextType | undefined>(undefined);
+
+// Create a Provider Component
+interface MyProviderProps {
+  children: ReactNode;
+}
+
+const MyProvider = ({ children }: MyProviderProps) => {
+  const [value, setValue] = useState<number>(0);
+  const [id, setId] = useState
+
+  return (
+    <MyContext.Provider value={{ value, setValue }}>
+      {children}
+    </MyContext.Provider>
+  );
+};
+
+// Create a Component that Consumes the Context
+const MyComponent = () => {
+  const context = useContext(MyContext);
+console.log(MyContext)
+  if (!context) {
+    throw new Error("MyComponent must be used within a MyProvider");
+  }
+
+  const { value, setValue } = context;
+
+  return (
+    <View style={styles.container}>
+      <Text>{value}</Text>
+      <Button title="Change Value" onPress={() => setValue(value + 1)} />
+        <Text>7</Text>
+    </View>
+  );
+};
+
+// Create the Main App Component
+const App = () => {
+
+  useEffect(
+    ()=>{
+ fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(response => response.json())
+      .then(json =>console.log(json))
+    },[]
+  )
+  return (
+    <MyProvider>
+      <MyComponent />
+    </MyProvider>
+  );
+};
+
+// Define some basic styles
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+export default App;
+------------------------------------------------------------
+In TypeScript, to define an array of objects, you can:
+
+1. type or interface
+2. inline type
+3. built in array type
+4. typeof operator
+
+1. type or interfaces
+	interface Person {
+		name: string;
+		age: number;
+		}
+	const people: Person[] =[
+		{
+			age: 27,
+			name:'time'
+		},
+			]
+-----------------------------------
+2. inline type
+	const people: {name:string; age: number;}[] =[
+		{
+			age:27,
+			name:'Time'
+		},
+				]
+------------------------------------
+3. Built in Array type
+	The Array<T> type accepts a generic argument that indicates the structure of the object that the array holds
+
+const people: Array<{ name: string; age: number; }> = [
+    {
+        age: 27,
+        name: 'Tim'
+    },
+  
+]
+prefer to use the Array<T> type instead of [] because it is more verbose.
+-------------------------------------
+4. typeof operator
+
+const item1 = {
+    age: 27,
+    name: 'Tim'
+};
+
+const item2 = {
+    age: 28,
+    name: 'Bob'
+};
+
+const people: Array<typeof item2> = [
+   item1,
+   item2
+];
+---------------------------------------
+========================================================================================================================
+
+/======================================================/
+/====The Double Question Mark Operator TypeScript =====/
+/======================================================/
+
+-> default fallbacks
+The double question mark operator or nullish coalescing operator helps assign a default value to a null or undefined TypeScript variable.
+When the left-hand operand is undefined or null, the double question mark operator returns the right-hand operand (default value). Otherwise, it returns the left-hand operand.
+And && true , true  -> true otherwise false
+Not || false, false -> false otherwise true
+& -> bitwise operator
+&& -> binary And
+
+--------double question mark-------
+The double question mark operator fallbacks when the value of the left-hand operand is null or undefined.
+
+console.log(null ?? "default"); // "default"
+console.log(undefined ?? "default"); // "default"
+console.log(false ?? "default"); // false
+console.log("" ?? "default"); // ""
+console.log(0 ?? "default"); // 0
+console.log(42 ?? "default"); // 42
+
+------double bar (or) double pipe operator-----------------
+The double bar operator fallbacks when the value of the left-hand operand is falsy (null, undefined, 0, '', NaN, false).
+
+console.log(null || "default"); // "default"
+console.log(undefined || "default"); // "default"
+console.log(false || "default"); // "default"
+console.log("" || "default"); // "default"
+console.log(0 || "default"); // "default"
+console.log(42 || "default"); // 42
+
+----------------------------------------------------
+/======================================================/
+/= How To Convert A String To A Number In TypeScript? =/
+/======================================================/
+1. Using the Number constructor
+
+// Outputs: 9999
+console.log(Number('9999'));
+
+// Outputs: NaN
+console.log(Number('asdqwewe2'));
+
+->This function works with integers and with floats.
+->If the function cannot cast the string into a number, it will return a NaN (not a number).
+
+---------------->
+
+2. Using the parseInt function
+
+The JavaScript parseInt function only works with integers.
+
+If you attempt to pass a string with floating-point values, they will be cut off.
+
+// Outputs: 55
+console.log(parseInt('55'));
+
+// Outputs: 23
+console.log(parseInt('23.22'));
+
+----------------->
+
+3. Using the parseFloat function
+
+The parseFloat function behaves the same as the parseInt function, except it accepts floating point values.
+
+// Outputs: 55
+console.log(parseFloat('55'));
+
+// Outputs: 23.22
+console.log(parseFloat('23.22'));
+
+4.  Using multiplication by one
+
+you must first cast the string to an any type.
+Otherwise, the TypeScript compiler will complain.
+
+// Outputs: 2323.12
+console.log("2323.12" as any * 1);
+
+// Outputs: 444
+console.log("444" as any * 1);
+
+// Outputs: -55
+console.log("-55" as any * 1);
+
+5. Using the double tilde operator
+
+values after the decimal point will be cut off
+
+// Outputs: 2323
+console.log(~~"2323.12");
+
+// Outputs: 444
+console.log(~~"444");
+
+------------------------------------------------------------------------------------------------
+
+/======================================================/
+/==========Declare An  Array In TypeScript ============/
+/======================================================/
+
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/======================================================/
+/=============Simple Types[primitives] ================/
+/======================================================/
+
+==>Type Assignment
+	Explicit - writing out the type:
+	let firstName: string = "Dylan";
+	Implicit - TypeScript will "guess" the type, based on the assigned value:
+	let firstName = "Dylan";
+
+/========================================================/
+/=======================Array[] ========================/
+/=======================================================/
+
+1. Explicitly declare the type
+
+	-> If you want to limit the types an empty array can accept, you can declare it explicitly.
+
+	// This array only accepts strings.
+	const strArr: string[] = [];
+	strArr.push('Tim');
+	
+	// This array only accepts numbers.
+	const numArr: number[] = [];
+	numArr.push(27);
+
+2. type assertion
+
+	-// This array only accepts strings.
+	const strArr = [] as string[];
+	strArr.push('Tim');
+
+	// This array only accepts numbers.
+	const numArr = [] as number[];
+	numArr.push(27);
+
+3. Array constructor
+
+	// This array only accepts strings.
+	const strArr = new Array<string>();
+	strArr.push('Tim');
+
+	// This array only accepts numbers.
+	const numArr = new Array<number>();
+	numArr.push(27);
+
+/======================================================/
+/=======Declare array of objects In TypeScript ========/
+/======================================================/
+
+	interface IArticle {
+    	content: string;
+    	date: Date;
+	};
+
+	const articles: IArticle[] = [];
+
+1. type or interface
+2. inline type
+3. built in array type
+4. typeof operator
+
+1. type or interfaces
+	interface Person {
+		name: string;
+		age: number;
+		}
+	const people: Person[] =[
+		{
+			age: 27,
+			name:'time'
+		},
+			]
+-----------------------------------
+2. inline type
+	const people: {name:string; age: number;}[] =[
+		{
+			age:27,
+			name:'Time'
+		},
+				]
+------------------------------------
+3. Built in Array type
+	The Array<T> type accepts a generic argument that indicates the structure of the object that the array holds
+
+const people: Array<{ name: string; age: number; }> = [
+    {
+        age: 27,
+        name: 'Tim'
+    },
+  
+]
+prefer to use the Array<T> type instead of [] because it is more verbose.
+-------------------------------------
+4. typeof operator
+
+const item1 = {
+    age: 27,
+    name: 'Tim'
+};
+
+const item2 = {
+    age: 28,
+    name: 'Bob'
+};
+
+const people: Array<typeof item2> = [
+   item1,
+   item2
+];
+
+
+/======================================================/
+/====================Typed Arrays =====================/
+/======================================================/
+
+1. A tuple is a typed array with a pre-defined length and types for each index.
+
+// define our tuple
+let ourTuple: [number, boolean, string];
+
+// initialize correctly
+ourTuple = [5, false, 'Coding God was here'];
+
+/======================================================/
+/========= String Interpolation In TypeScript =========/
+/======================================================/
+
+	const age = 20;
+	console.log(`Your age is ${age}`);
+
+When using TypeScript, developers often need to replace placeholders with values inside a string. This operation is called string interpolation.
+
+Template literals, also called template strings, were added in ES6.
+
+A template literal is delimited with backtick ` characters.
+
+const lit = `My name is Tim`;
+
+Before template literals, developers needed to use the + operator to concatenate strings.
+
+// Outputs: 'My name is Tim'
+console.log('My name is ' + 'Tim');
+
+To add a variable inside a template literal, you need to use the special dollar sign ${} notation.
+
+const myName = 'Tim';
+
+// Outputs: 'My name is Tim'
+console.log(`My name is ${myName}`);
+
+You can also use functions inside template expressions.
+
+const getName = (first: string, last: string): string => {
+    return `${first} ${last}`;
+}
+
+// Outputs: 'My name is: Tim Mousk'
+console.log(`My name is: ${getName('Tim', 'Mousk')}`);
+
+the double question mark operator or the double pipe operator to set a default fallback.
+
+const getName = (first: string, last: string): string => {
+    return `${first} ${last}`;
+}
+
+// Outputs: 'My name is: Tim Mousk'
+console.log(`My name is: ${getName('Tim', 'Mousk')}`);
+
+multi-line string interpolation
+
+const myName = 'Tim';
+const age = 27;
+
+console.log(`My name is: ${myName} My age is: ${age}`);
+
+Escape the dollar sign with a template literal
+
+// Outputs: '${'
+console.log(`$\{`);
+
+
+==>
+==>
+==>
+==>
+==>
+==>
+==>
+==>
+
+Location
+
+1. npm i react-native-geolocation-service
+
+2. Adding those line 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+3. react native page permission line
+
+4. 
+------------------------------------------------------------
+Vibration
+
+1. and line in andriodmanifesto
+------------------------------------------------------------
+Push Notification
+
+1.
+------------------------------------------------------------
+  /====================================================/
+ /============= TypeScript Utility Types =============/
+/====================================================/ 
+
+1.Partial
+2.Required
+3.Record
+4.Omit
+5.Pick
+6.Exclude
+7.ReturnType
+8.Parameters
+9.Readonly
+10.NonNullable
+11.InstanceType
+
+Type related
+1.Partial
+2.Readonly
+3.Parameters
+4.NonNullable
+5.ReturnType
+6.InstanceType
+7.Required
+
+Type, Keys
+1.Pick
+2.Omit
+
+Keys, Type
+1.Record
+
+Type, Union
+1.Extract
+2.Exclude
+-------------------------------------------------------->
+			Type related
+1.Partial
+	The Partial utility type lets you create a new type with all Type properties set to optional.
+ 	when you want to update an object without updating all of its fields.
+Update some fields in an existing object.
+Mock some functions in your unit test.
+Pass constructor values to populate a new instance of the class.
+
+2.Readonly
+This means that you will not be able to modify a property value.
+
+3.Parameters
+Parameters extracts the parameter types of a function type as an array.
+
+4.NonNullable
+You create a new type by excluding null and undefined from a passed Type.
+
+5.ReturnType
+ReturnType extracts the return type of a function type.
+
+6.InstanceType
+The InstanceType utility type lets you create a new type from the constructor function of Type.
+
+7.Required
+Required changes all the properties in an object to be required.
+----------------------------------------------------------->
+			Keys, Type
+1.Record
+The Record utility type lets you create a new type whose properties are Keys and values are Type
+------------------------------------------------------------------>
+			Type, Keys
+1.Pick
+The Pick utility type lets you create a new type by picking properties from a Type.
+
+2.Omit
+Omit removes keys from an object type.
+------------------------------------------------------------------>
+			Type, Union
+1.Extract
+lets you extract all declared keys inside Union from Type .
+
+2.Exclude
+The Exclude utility type lets you exclude all declared keys inside Union from Type .
+------------------------------------------------------------------>
+
+  /====================================================/
+ /================ String to a Number ================/
+/====================================================/ 
+
+1. Using the Number() Function
+const myString = '42';
+const myNumber = Number(myString);
+console.log(typeof myNumber); // output: 'number'
+
+2. Using the parseInt() Function
+const myString = '42';
+const myNumber = parseInt(myString);
+console.log(typeof myNumber); // output: 'number'
+
+3. Using the parseFloat() Function
+const myString = '3.14';
+const myNumber = parseFloat(myString);
+console.log(typeof myNumber); // output: 'number'
+
+4. Using unary operator
+let someString:string = "4245"
+let myNumber:number = +someString;
+
+// Returns 4246
+console.log(myNumber + 1); 
+----------------------------------------------------------------------------->
+When Type inference occur
+
+
+
+
